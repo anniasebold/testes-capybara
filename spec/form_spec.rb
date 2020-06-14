@@ -1,4 +1,4 @@
-describe "Register" do
+describe "Register", :register do
   it "register-correct" do
     visit 'http://staging.arqnex.jera.com.br/'
     click_link 'Cadastrar'
