@@ -335,6 +335,49 @@ describe "Register", :register do
     sleep 5
   end
 
+  it "email-exists" do
+    visit 'http://staging.arqnex.jera.com.br/'
+    click_link 'Cadastrar'
+
+    random_name = Faker::Name.name
+    fill_in 'name', with: "#{random_name}"
+
+    atuation = ["Arquiteto", "Acadêmico de Design", "Acadêmico de Arquitetura", "Designer"]
+    random_atuation = atuation.sample
+    select("#{random_atuation}", from: 'scholarship')
+
+    if(random_atuation == "Arquiteto") 
+      fill_in 'registerCau', with: "#{Faker::Number.number(digits: 5)}"
+    end
+
+    random_cpf = DocumentosBr.cpf_formatted
+    valid_cpf = DocumentosBr.valid_cpf?("#{random_cpf}")
+
+    if valid_cpf == true 
+      fill_in 'cpf', with: ("#{random_cpf}")
+    else
+      fill_in 'cpf', with: ("#{CpfUtils.cpf_formatted}")
+    end
+
+    city_exists = false
+
+    while !city_exists do
+      random_city = Faker::Address.city
+      fill_in 'findCity', with: "#{random_city}"
+      city_exists = page.has_css?('.ui-menu-item', text: "#{random_city}", exact_text: false, wait: 10)
+    end
+    find('.ui-menu-item', text: "#{random_city}", match: :first).click
+
+    fill_in 'email', with: "annia@jera.com.br"
+    fill_in 'password', with: 'secret123'
+
+    find('.custom-control-label', text: 'Ao criar minha conta eu aceito os').click
+
+    click_button 'register'
+    expect(page).to have_content("Email já existe") 
+    sleep 5
+  end
+
   it "invalid-password-and-email", :erro do
     visit 'http://staging.arqnex.jera.com.br/'
     click_link 'Cadastrar'

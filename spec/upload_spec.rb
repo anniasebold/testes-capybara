@@ -13,7 +13,7 @@ describe "Upload", :upload do
     fill_in "loginPassword", with: "secret123"
 
     click_button "submitLogin"
-    expect(page).to have_content("Olá Annia Luiza Sebold")
+    expect(page).to have_content("Olá Annia Sebold")
 
     click_link "Postar trabalho"
     expect(page).to have_content("Qual seu último trabalho?")
