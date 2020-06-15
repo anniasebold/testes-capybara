@@ -14,13 +14,13 @@ describe "Register", :register do
       fill_in 'registerCau', with: "#{Faker::Number.number(digits: 5)}"
     end
 
-    random_cpf = CpfUtils.cpf
-    valid_cpf = CpfUtils.valid_cpf?("#{random_cpf}")
+    random_cpf = DocumentosBr.cpf_formatted
+    valid_cpf = DocumentosBr.valid_cpf?("#{random_cpf}")
 
     if valid_cpf == true 
-      fill_in 'cpf', with: "#{random_cpf}"
+      fill_in 'cpf', with: ("#{random_cpf}")
     else
-      fill_in 'cpf', with: "#{DocumentosBr.cpf}"
+      fill_in 'cpf', with: ("#{CpfUtils.cpf_formatted}")
     end
 
     city_exists = false
@@ -100,13 +100,13 @@ describe "Register", :register do
       fill_in 'registerCau', with: "#{Faker::Number.number(digits: 5)}"
     end
 
-    random_cpf = CpfUtils.cpf
-    valid_cpf = CpfUtils.valid_cpf?("#{random_cpf}")
+    random_cpf = DocumentosBr.cpf_formatted
+    valid_cpf = DocumentosBr.valid_cpf?("#{random_cpf}")
 
     if valid_cpf == true 
-      fill_in 'cpf', with: "#{random_cpf}"
+      fill_in 'cpf', with: ("#{random_cpf}")
     else
-      fill_in 'cpf', with: "#{DocumentosBr.cpf}"
+      fill_in 'cpf', with: ("#{CpfUtils.cpf_formatted}")
     end
 
     city_exists = false
@@ -143,13 +143,14 @@ describe "Register", :register do
       fill_in 'registerCau', with: "#{Faker::Number.number(digits: 5)}"
     end
 
-    # random_cpf = CpfUtils.cpf
-    # valid_cpf = CpfUtils.valid_cpf?("#{random_cpf}")
+    # random_cpf = DocumentosBr.cpf_formatted
+    # valid_cpf = DocumentosBr.valid_cpf?("#{random_cpf}")
+    # puts random_cpf
 
     # if valid_cpf == true 
-    #   fill_in 'cpf', with: "#{random_cpf}"
+    #   fill_in 'cpf', with: ("#{random_cpf}")
     # else
-    #   fill_in 'cpf', with: "#{DocumentosBr.cpf}"
+    #   fill_in 'cpf', with: ("#{CpfUtils.cpf_formatted}")
     # end
 
     city_exists = false
@@ -186,13 +187,13 @@ describe "Register", :register do
       fill_in 'registerCau', with: "#{Faker::Number.number(digits: 5)}"
     end
 
-    random_cpf = CpfUtils.cpf
-    valid_cpf = CpfUtils.valid_cpf?("#{random_cpf}")
+    random_cpf = DocumentosBr.cpf_formatted
+    valid_cpf = DocumentosBr.valid_cpf?("#{random_cpf}")
 
     if valid_cpf == true 
-      fill_in 'cpf', with: "#{random_cpf}"
+      fill_in 'cpf', with: ("#{random_cpf}")
     else
-      fill_in 'cpf', with: "#{DocumentosBr.cpf}"
+      fill_in 'cpf', with: ("#{CpfUtils.cpf_formatted}")
     end
 
     city_exists = false
@@ -265,13 +266,13 @@ describe "Register", :register do
       fill_in 'registerCau', with: "#{Faker::Number.number(digits: 5)}"
     end
 
-    random_cpf = CpfUtils.cpf
-    valid_cpf = CpfUtils.valid_cpf?("#{random_cpf}")
+    random_cpf = DocumentosBr.cpf_formatted
+    valid_cpf = DocumentosBr.valid_cpf?("#{random_cpf}")
 
     if valid_cpf == true 
-      fill_in 'cpf', with: "#{random_cpf}"
+      fill_in 'cpf', with: ("#{random_cpf}")
     else
-      fill_in 'cpf', with: "#{DocumentosBr.cpf}"
+      fill_in 'cpf', with: ("#{CpfUtils.cpf_formatted}")
     end
 
     city_exists = false
@@ -307,13 +308,13 @@ describe "Register", :register do
       fill_in 'registerCau', with: "#{Faker::Number.number(digits: 5)}"
     end
 
-    random_cpf = CpfUtils.cpf
-    valid_cpf = CpfUtils.valid_cpf?("#{random_cpf}")
+    random_cpf = DocumentosBr.cpf_formatted
+    valid_cpf = DocumentosBr.valid_cpf?("#{random_cpf}")
 
     if valid_cpf == true 
-      fill_in 'cpf', with: "#{random_cpf}"
+      fill_in 'cpf', with: ("#{random_cpf}")
     else
-      fill_in 'cpf', with: "#{DocumentosBr.cpf}"
+      fill_in 'cpf', with: ("#{CpfUtils.cpf_formatted}")
     end
 
     city_exists = false
@@ -349,14 +350,13 @@ describe "Register", :register do
       fill_in 'registerCau', with: "#{Faker::Number.number(digits: 5)}"
     end
 
-    random_cpf = CpfUtils.cpf
-    valid_cpf = CpfUtils.valid_cpf?("#{random_cpf}")
-    puts random_cpf
+    random_cpf = DocumentosBr.cpf_formatted
+    valid_cpf = DocumentosBr.valid_cpf?("#{random_cpf}")
 
     if valid_cpf == true 
-      fill_in 'cpf', with: "#{random_cpf}"
+      fill_in 'cpf', with: ("#{random_cpf}")
     else
-      fill_in 'cpf', with: "#{DocumentosBr.cpf}"
+      fill_in 'cpf', with: ("#{CpfUtils.cpf_formatted}")
     end
 
     city_exists = false
@@ -373,7 +373,7 @@ describe "Register", :register do
     find('.custom-control-label', text: 'Ao criar minha conta eu aceito os').click
 
     click_button 'register'
-    expect(page).to have_content("Email inválido") 
+    expect(page).to have_content("Email Inválido") 
     sleep 5
   end
 
